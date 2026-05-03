@@ -258,6 +258,22 @@
                 showMsg("signup-msg", "Please accept the Terms of Service.", "danger"); return;
             }
             try {
+                const validateResp = await fetch("/api/validate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: data.email })
+                });
+                if (validateResp.status === 500) {
+                    showMsg("signup-msg", "An account with this email already exists.", "danger");
+                    return;
+                }
+                if (!validateResp.ok) {
+                    const vjson = await safeJson(validateResp);
+                    const msg = (vjson && vjson.error) || ("Could not validate email (HTTP " + validateResp.status + ")");
+                    showMsg("signup-msg", msg, "danger");
+                    return;
+                }
+
                 const resp = await fetch("/api/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
