@@ -56,9 +56,9 @@
                     <input type="text" placeholder="Search for products..." class="bg-transparent flex-1 outline-none text-sm" onkeydown="event.preventDefault()" />
                     <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
                 </div>
-                <button class="icon-btn hover:bg-gray-100" aria-label="Account" onclick="return false">
+                <a href="/login" class="icon-btn hover:bg-gray-100" aria-label="Account">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
-                </button>
+                </a>
                 <button class="icon-btn hover:bg-gray-100 relative" aria-label="Cart" onclick="return false">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.5 11a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 7Z"/><path d="M9 7a3 3 0 1 1 6 0"/></svg>
                     <span class="cart-pip">0</span>
@@ -129,11 +129,10 @@
 
                 <form id="signup-form" class="mt-7" novalidate>
                     <label class="block text-xs font-semibold tracking-wider text-gray-700">FULL NAME</label>
-                    <input class="field mt-2" type="text" name="name" id="signup-name" />
+                    <input class="field mt-2" type="text" name="name" id="signup-name" required />
 
                     <label class="block text-xs font-semibold tracking-wider text-gray-700 mt-5">EMAIL</label>
                     <input class="field mt-2" type="email" name="email" id="signup-email" required />
-                    <small id="email-feedback" class="block mt-1 text-xs text-gray-500"></small>
 
                     <div class="grid grid-cols-2 gap-4 mt-5">
                         <div>
@@ -232,31 +231,12 @@
             }
         });
 
-        const signupEmailInput = document.getElementById("signup-email");
-        const emailFeedback = document.getElementById("email-feedback");
-
-        signupEmailInput.addEventListener("blur", async function () {
-            const email = signupEmailInput.value.trim();
-            if (!email) { emailFeedback.textContent = ""; emailFeedback.className = "block mt-1 text-xs text-gray-500"; return; }
-            try {
-                const resp = await fetch("/api/validate", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email: email })
-                });
-                if (resp.ok) {
-                    emailFeedback.textContent = "This email is available.";
-                    emailFeedback.className = "block mt-1 text-xs text-green-600";
-                } else {
-                    emailFeedback.textContent = "Could not validate this email. Try a different address.";
-                    emailFeedback.className = "block mt-1 text-xs text-red-600";
-                }
-            } catch (err) { emailFeedback.textContent = ""; }
-        });
-
         document.getElementById("signup-form").addEventListener("submit", async function (e) {
             e.preventDefault();
             const data = Object.fromEntries(new FormData(e.target).entries());
+            if (!data.name || !data.name.trim()) {
+                showMsg("signup-msg", "Please enter your full name.", "danger"); return;
+            }
             if (data.password !== data.confirm_password) {
                 showMsg("signup-msg", "Passwords do not match.", "danger"); return;
             }
@@ -264,10 +244,24 @@
                 showMsg("signup-msg", "Please accept the Terms of Service.", "danger"); return;
             }
             try {
+                const validateResp = await fetch("/api/validate", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email: data.email })
+                });
+                if (!validateResp.ok) {
+                    showMsg("signup-msg", "This email cannot be used. Please try another.", "danger");
+                    return;
+                }
+            } catch (err) {
+                showMsg("signup-msg", "Network error during email validation", "danger");
+                return;
+            }
+            try {
                 const resp = await fetch("/api/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ email: data.email, password: data.password })
+                    body: JSON.stringify({ email: data.email, password: data.password, name: data.name.trim() })
                 });
                 const json = await resp.json();
                 if (resp.ok && json.token) {

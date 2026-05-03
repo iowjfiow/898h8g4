@@ -41,8 +41,9 @@
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex items-end justify-between mb-8">
             <div>
-                <h1 class="display text-3xl">My account</h1>
+                <h1 class="display text-3xl">Welcome, <span id="greeting-name">there</span></h1>
                 <p class="text-gray-500 mt-1">Manage your NEXORA profile and preferences.</p>
+                <p class="text-xs text-gray-400 mt-1" id="greeting-email"></p>
             </div>
             <span class="px-3 py-1 rounded-full bg-gray-200 text-xs font-medium text-gray-700">Standard member</span>
         </div>
@@ -68,7 +69,9 @@
                 <p class="text-sm text-gray-500">Update your personal information.</p>
                 <form class="mt-5" onsubmit="event.preventDefault(); alert('Saved.');">
                     <label class="text-xs font-semibold tracking-wider text-gray-700">DISPLAY NAME</label>
-                    <input class="field mt-2" value="Archer" />
+                    <input id="profile-name" class="field mt-2" value="" />
+                    <label class="block text-xs font-semibold tracking-wider text-gray-700 mt-4">EMAIL</label>
+                    <input id="profile-email" class="field mt-2" value="" readonly />
                     <label class="block text-xs font-semibold tracking-wider text-gray-700 mt-4">PHONE</label>
                     <input class="field mt-2" value="+91 99999 00000" />
                     <button class="mt-5 bg-black text-white text-sm font-semibold tracking-wider px-5 py-3 rounded-full">SAVE CHANGES</button>
@@ -90,6 +93,38 @@
     </main>
 
     <script>
+        function getCookie(name) {
+            const m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/[.$?*|{}()\[\]\\\/+^]/g, '\\$&') + '=([^;]*)'));
+            return m ? decodeURIComponent(m[1]) : null;
+        }
+
+        function decodeJwt(token) {
+            try {
+                const parts = token.split('.');
+                if (parts.length !== 3) return null;
+                const payload = parts[1].replace(/-/g, '+').replace(/_/g, '/');
+                const padded = payload + '='.repeat((4 - payload.length % 4) % 4);
+                return JSON.parse(atob(padded));
+            } catch (e) { return null; }
+        }
+
+        (function hydrateUser() {
+            const token = getCookie('token');
+            if (!token) { window.location.href = '/login'; return; }
+            const payload = decodeJwt(token);
+            if (!payload) { window.location.href = '/login'; return; }
+            const displayName = (payload.name && payload.name.trim()) ? payload.name.trim() : (payload.email ? payload.email.split('@')[0] : 'there');
+            const greet = document.getElementById('greeting-name');
+            const greetEmail = document.getElementById('greeting-email');
+            const profName = document.getElementById('profile-name');
+            const profEmail = document.getElementById('profile-email');
+            if (greet) greet.textContent = displayName;
+            if (greetEmail) greetEmail.textContent = payload.email || '';
+            if (profName) profName.value = displayName;
+            if (profEmail) profEmail.value = payload.email || '';
+            document.title = displayName + ' \u00b7 NEXORA';
+        })();
+
         document.getElementById("logout-btn").addEventListener("click", function () {
             document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
             window.location.href = "/login";

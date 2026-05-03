@@ -15,13 +15,14 @@ const users = [
     {
         email: "mahesh@nexora.htb",
         password: "9b8f2c1e7a4d6b3f8e0a1c5d2b7e9f4a",
-        role: "admin"
+        role: "admin",
+        name: "Mahesh"
     }
 ];
 
 function issueToken(user) {
     return jwt.sign(
-        { email: user.email, role: user.role },
+        { email: user.email, role: user.role, name: user.name || "" },
         JWT_SECRET,
         { expiresIn: "1h" }
     );
@@ -44,14 +45,14 @@ app.get("/admin", (req, res) => sendPage(res, "admin.html"));
 app.get("/dashboard", (req, res) => sendPage(res, "user_dashboard.html"));
 
 app.post("/api/register", (req, res) => {
-    const { email, password } = req.body || {};
+    const { email, password, name } = req.body || {};
     if (!email || !password) {
         return res.status(400).json({ error: "email and password are required" });
     }
     if (users.find(u => u.email === email)) {
         return res.status(409).json({ error: "user already exists" });
     }
-    const newUser = { email, password, role: "user" };
+    const newUser = { email, password, role: "user", name: (name || "").toString().trim() };
     users.push(newUser);
     const token = issueToken(newUser);
     return res.status(200).json({ message: "registered", token });
