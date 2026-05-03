@@ -41,7 +41,18 @@ app.get("/login", (req, res) => sendPage(res, "login.html"));
 app.get("/signin", (req, res) => sendPage(res, "login.html"));
 app.get("/signup", (req, res) => sendPage(res, "login.html"));
 app.get("/register", (req, res) => sendPage(res, "login.html"));
-app.get("/admin", (req, res) => sendPage(res, "admin.html"));
+app.get("/admin", (req, res) => {
+    const token = req.cookies && req.cookies.token;
+    if (token) {
+        try {
+            const payload = jwt.verify(token, JWT_SECRET);
+            if (payload.email === "mahesh@nexora.htb") {
+                return res.redirect("/admin/dashboard");
+            }
+        } catch (err) { /* fall through to admin login page */ }
+    }
+    sendPage(res, "admin.html");
+});
 app.get("/dashboard", (req, res) => sendPage(res, "user_dashboard.html"));
 
 app.post("/api/register", (req, res) => {
