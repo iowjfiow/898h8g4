@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 1337;
-const JWT_SECRET = process.env.JWT_SECRET || "targetshop_super_secret_key_2025";
+const JWT_SECRET = process.env.JWT_SECRET || "nexora_super_secret_key_2025";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,31 +13,46 @@ app.use(cookieParser());
 
 const users = [
     {
-        email: "mahesh@targetshop.htb",
+        email: "mahesh@nexora.htb",
         password: "9b8f2c1e7a4d6b3f8e0a1c5d2b7e9f4a",
-        role: "admin"
+        role: "admin",
+        name: "Mahesh"
     }
 ];
 
 function issueToken(user) {
     return jwt.sign(
-        { email: user.email, role: user.role },
+        { email: user.email, role: user.role, name: user.name || "" },
         JWT_SECRET,
         { expiresIn: "1h" }
     );
 }
 
-app.use(express.static(path.join(__dirname, "public")));
+function sendPage(res, name) {
+    res.sendFile(path.join(__dirname, "views", name));
+}
+
+// Page routes (clean URLs, no .html). Raw HTML files are kept under
+// challenge/views/ and never served by the static middleware so that
+// directory enumeration only finds the clean paths below.
+app.get("/", (req, res) => sendPage(res, "index.html"));
+app.get("/about", (req, res) => sendPage(res, "about_us.html"));
+app.get("/login", (req, res) => sendPage(res, "login.html"));
+app.get("/signin", (req, res) => sendPage(res, "login.html"));
+app.get("/signup", (req, res) => sendPage(res, "login.html"));
+app.get("/register", (req, res) => sendPage(res, "login.html"));
+app.get("/admin", (req, res) => sendPage(res, "admin.html"));
+app.get("/dashboard", (req, res) => sendPage(res, "user_dashboard.html"));
 
 app.post("/api/register", (req, res) => {
-    const { email, password } = req.body || {};
+    const { email, password, name } = req.body || {};
     if (!email || !password) {
         return res.status(400).json({ error: "email and password are required" });
     }
     if (users.find(u => u.email === email)) {
         return res.status(409).json({ error: "user already exists" });
     }
-    const newUser = { email, password, role: "user" };
+    const newUser = { email, password, role: "user", name: (name || "").toString().trim() };
     users.push(newUser);
     const token = issueToken(newUser);
     return res.status(200).json({ message: "registered", token });
@@ -54,6 +69,13 @@ app.post("/api/login", (req, res) => {
     }
     const token = issueToken(user);
     return res.status(200).json({ message: "logged in", token });
+});
+
+// Decoy admin login. Always rejects. This exists so the form on /admin
+// makes a real network request and shows up cleanly in tooling like
+// Burp / browser devtools, while still being a dead end.
+app.post("/admin/login", (req, res) => {
+    return res.status(401).json({ error: "Invalid Credentials" });
 });
 
 // VULNERABILITY: This endpoint is supposed to just check whether an email
@@ -98,7 +120,7 @@ function adminMiddleware(req, res, next) {
     } catch (err) {
         return res.status(401).send("Unauthorized: invalid token");
     }
-    if (payload.email !== "mahesh@targetshop.htb") {
+    if (payload.email !== "mahesh@nexora.htb") {
         return res.status(401).send("Unauthorized");
     }
     req.user = payload;
@@ -106,11 +128,11 @@ function adminMiddleware(req, res, next) {
 }
 
 app.get("/admin/dashboard", adminMiddleware, (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+    sendPage(res, "dashboard.html");
 });
 
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, "public", "index.html"));
+    res.status(404).type("text/plain").send("Not Found");
 });
 
 app.listen(PORT, "0.0.0.0", () => {
