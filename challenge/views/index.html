@@ -49,8 +49,8 @@
 
     <!-- Header -->
     <header class="border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
-            <a href="/" class="brand text-2xl">NEXORA<span class="text-black">.</span></a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
+            <a href="/" class="brand text-xl sm:text-2xl">NEXORA<span class="text-black">.</span></a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
                 <a href="/" class="nav-link active text-black">Home</a>
                 <a href="#" class="nav-link" onclick="event.preventDefault()">Shop</a>
@@ -58,7 +58,7 @@
                 <a href="#" class="nav-link" onclick="event.preventDefault()">Deals</a>
                 <a href="/about" class="nav-link">About</a>
             </nav>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1 sm:gap-3">
                 <div class="hidden lg:flex items-center w-72 h-10 px-4 rounded-full border border-gray-200 bg-gray-50">
                     <input type="text" placeholder="Search for products..." class="bg-transparent flex-1 outline-none text-sm" onkeydown="event.preventDefault()" />
                     <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
@@ -77,30 +77,30 @@
     <!-- Hero -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
         <div class="relative bg-gray-100 rounded-3xl overflow-hidden">
-            <div class="grid md:grid-cols-2 gap-6 items-center">
-                <div class="px-8 py-12 sm:px-14 sm:py-16">
-                    <div class="text-xs tracking-[0.3em] text-gray-500 mb-6">NEW ARRIVAL</div>
-                    <h1 class="display text-5xl sm:text-6xl leading-none">Simplicity.<br/>Redefined.</h1>
-                    <p class="text-gray-500 mt-6 max-w-sm">Discover timeless essentials crafted for everyday elegance.</p>
-                    <a href="#featured" class="mt-8 inline-flex items-center gap-3 bg-black text-white text-sm font-semibold tracking-wider px-7 py-3.5 rounded-full hover:bg-gray-800">
+            <div class="grid md:grid-cols-2 gap-4 md:gap-6 items-center">
+                <div class="px-6 py-10 sm:px-14 sm:py-16">
+                    <div class="text-[11px] sm:text-xs tracking-[0.3em] text-gray-500 mb-4 sm:mb-6">NEW ARRIVAL</div>
+                    <h1 class="display text-4xl sm:text-5xl md:text-6xl leading-none">Simplicity.<br/>Redefined.</h1>
+                    <p class="text-gray-500 mt-4 sm:mt-6 max-w-sm text-sm sm:text-base">Discover timeless essentials crafted for everyday elegance.</p>
+                    <a href="#featured" class="mt-6 sm:mt-8 inline-flex items-center gap-3 bg-black text-white text-sm font-semibold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-gray-800">
                         SHOP NOW
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
-                    <div class="flex items-center gap-2 mt-10">
+                    <div class="flex items-center gap-2 mt-8 sm:mt-10">
                         <span class="w-6 h-1.5 rounded-full bg-black"></span>
                         <span class="w-2 h-1.5 rounded-full bg-gray-300"></span>
                         <span class="w-2 h-1.5 rounded-full bg-gray-300"></span>
                     </div>
                 </div>
-                <div class="relative h-72 md:h-[420px] flex items-center justify-end gap-2 pr-8">
+                <div class="relative h-64 sm:h-80 md:h-[420px] flex items-center justify-end gap-2 pr-4 sm:pr-8 overflow-hidden">
                     <div class="text-right shrink-0">
                         <div class="text-[11px] tracking-[0.3em] text-gray-500">UP TO</div>
-                        <div class="display text-5xl sm:text-6xl mt-2 leading-none">40%</div>
-                        <div class="text-[11px] tracking-[0.3em] text-gray-500 mt-2">OFF</div>
-                        <div class="w-10 h-px bg-gray-400 ml-auto mt-3"></div>
+                        <div class="display text-4xl sm:text-5xl md:text-6xl mt-1 sm:mt-2 leading-none">40%</div>
+                        <div class="text-[11px] tracking-[0.3em] text-gray-500 mt-1 sm:mt-2">OFF</div>
+                        <div class="w-8 sm:w-10 h-px bg-gray-400 ml-auto mt-2 sm:mt-3"></div>
                     </div>
-                    <!-- Vase illustration -->
-                    <svg class="shrink-0" width="280" height="380" viewBox="0 0 280 380" fill="none" preserveAspectRatio="xMidYEnd meet">
+                    <!-- Vase illustration (responsive) -->
+                    <svg class="shrink-0 w-[180px] h-[260px] sm:w-[240px] sm:h-[320px] md:w-[280px] md:h-[380px]" viewBox="0 0 280 380" fill="none" preserveAspectRatio="xMidYEnd meet">
                         <!-- pedestal -->
                         <rect x="60" y="330" width="200" height="22" rx="2" fill="#fff" stroke="#e5e5e5"/>
                         <ellipse cx="160" cy="358" rx="120" ry="8" fill="#000" opacity="0.05"/>
@@ -290,9 +290,9 @@
 
     <!-- Newsletter strip (static, submit does nothing) -->
     <section class="bg-black text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div class="flex items-center gap-4">
-                <span class="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center">
+                <span class="w-12 h-12 shrink-0 rounded-full border border-white/40 flex items-center justify-center">
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m4 8 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
                 <div>
@@ -300,8 +300,8 @@
                     <div class="text-sm text-gray-300">Subscribe to get updates on new arrivals and exclusive offers.</div>
                 </div>
             </div>
-            <form id="newsletter" class="flex items-center gap-3 w-full md:w-auto" onsubmit="event.preventDefault()">
-                <input type="email" placeholder="Enter your email" class="bg-transparent border border-white/30 rounded-full px-5 py-3 text-sm w-full md:w-72 outline-none placeholder:text-gray-400 focus:border-white" />
+            <form id="newsletter" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto" onsubmit="event.preventDefault()">
+                <input type="email" placeholder="Enter your email" class="bg-transparent border border-white/30 rounded-full px-5 py-3 text-sm w-full sm:w-72 outline-none placeholder:text-gray-400 focus:border-white" />
                 <button type="submit" class="bg-white text-black font-semibold tracking-wider text-sm px-6 py-3 rounded-full">SUBSCRIBE</button>
             </form>
         </div>
@@ -309,10 +309,10 @@
 
     <!-- Footer -->
     <footer class="bg-[#f7f3eb]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-3 gap-6 items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-3 gap-6 items-center text-center md:text-left">
             <a href="/" class="brand text-3xl">NEXORA<span class="text-black">.</span></a>
-            <p class="text-center font-serif italic text-base text-gray-700">Simplicity that stands out.<br/>Quality that lasts.</p>
-            <div class="flex md:justify-end items-center gap-5 text-black">
+            <p class="font-serif italic text-base text-gray-700">Simplicity that stands out.<br/>Quality that lasts.</p>
+            <div class="flex justify-center md:justify-end items-center gap-5 text-black">
                 <a href="#" onclick="event.preventDefault()" aria-label="Instagram"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
                 <a href="#" onclick="event.preventDefault()" aria-label="Facebook"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H6v4h3v8h4Z"/></svg></a>
                 <a href="#" onclick="event.preventDefault()" aria-label="Facebook"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H6v4h3v8h4Z"/></svg></a>

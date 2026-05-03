@@ -25,8 +25,8 @@
     </div>
 
     <header class="bg-white border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
-            <a href="/" class="brand text-2xl">NEXORA<span class="text-black">.</span></a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
+            <a href="/" class="brand text-xl sm:text-2xl">NEXORA<span class="text-black">.</span></a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
                 <a href="/" class="hover:text-black">Home</a>
                 <a href="#" onclick="event.preventDefault()" class="hover:text-black">Shop</a>
@@ -34,37 +34,37 @@
                 <a href="#" onclick="event.preventDefault()" class="hover:text-black">Deals</a>
                 <a href="/about" class="hover:text-black">About</a>
             </nav>
-            <button id="logout-btn" class="text-sm font-semibold border border-gray-300 rounded-full px-5 py-2 hover:bg-gray-100">Logout</button>
+            <button id="logout-btn" class="text-xs sm:text-sm font-semibold border border-gray-300 rounded-full px-4 sm:px-5 py-2 hover:bg-gray-100">Logout</button>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex items-end justify-between mb-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 sm:mb-8">
             <div>
-                <h1 class="display text-3xl">Welcome, <span id="greeting-name">there</span></h1>
-                <p class="text-gray-500 mt-1">Manage your NEXORA profile and preferences.</p>
-                <p class="text-xs text-gray-400 mt-1" id="greeting-email"></p>
+                <h1 class="display text-2xl sm:text-3xl">Welcome, <span id="greeting-name" class="break-words">there</span></h1>
+                <p class="text-gray-500 mt-1 text-sm sm:text-base">Manage your NEXORA profile and preferences.</p>
+                <p class="text-xs text-gray-400 mt-1 break-all" id="greeting-email"></p>
             </div>
-            <span class="px-3 py-1 rounded-full bg-gray-200 text-xs font-medium text-gray-700">Standard member</span>
+            <span class="self-start sm:self-auto px-3 py-1 rounded-full bg-gray-200 text-xs font-medium text-gray-700 whitespace-nowrap">Standard member</span>
         </div>
 
-        <div class="grid sm:grid-cols-3 gap-4 mb-8">
-            <div class="bg-white rounded-2xl border border-gray-200 p-5">
-                <div class="text-xs text-gray-500 tracking-widest">ORDERS</div>
-                <div class="display text-3xl mt-1">0</div>
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 mb-8">
+            <div class="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5">
+                <div class="text-[10px] sm:text-xs text-gray-500 tracking-widest">ORDERS</div>
+                <div class="display text-2xl sm:text-3xl mt-1">0</div>
             </div>
-            <div class="bg-white rounded-2xl border border-gray-200 p-5">
-                <div class="text-xs text-gray-500 tracking-widest">WISHLIST</div>
-                <div class="display text-3xl mt-1">0</div>
+            <div class="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5">
+                <div class="text-[10px] sm:text-xs text-gray-500 tracking-widest">WISHLIST</div>
+                <div class="display text-2xl sm:text-3xl mt-1">0</div>
             </div>
-            <div class="bg-white rounded-2xl border border-gray-200 p-5">
-                <div class="text-xs text-gray-500 tracking-widest">REWARD POINTS</div>
-                <div class="display text-3xl mt-1">25</div>
+            <div class="bg-white rounded-2xl border border-gray-200 p-4 sm:p-5">
+                <div class="text-[10px] sm:text-xs text-gray-500 tracking-widest">REWARDS</div>
+                <div class="display text-2xl sm:text-3xl mt-1">25</div>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <section class="bg-white rounded-2xl border border-gray-200 p-7">
+        <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+            <section class="bg-white rounded-2xl border border-gray-200 p-5 sm:p-7">
                 <h2 class="font-bold text-lg">Profile</h2>
                 <p class="text-sm text-gray-500">Update your personal information.</p>
                 <form class="mt-5" onsubmit="event.preventDefault(); alert('Saved.');">
@@ -78,7 +78,7 @@
                 </form>
             </section>
 
-            <section class="bg-white rounded-2xl border border-gray-200 p-7">
+            <section class="bg-white rounded-2xl border border-gray-200 p-5 sm:p-7">
                 <h2 class="font-bold text-lg">Security</h2>
                 <p class="text-sm text-gray-500">Update your password.</p>
                 <form class="mt-5" onsubmit="event.preventDefault(); alert('Password updated.');">

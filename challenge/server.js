@@ -136,5 +136,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, "0.0.0.0", () => {
-    console.log(`TargetShop listening on port ${PORT}`);
+    console.log(`NEXORA listening on port ${PORT}`);
 });
