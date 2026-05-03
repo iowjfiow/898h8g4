@@ -55,10 +55,26 @@
     </div>
 
     <script>
-        document.getElementById("admin-login").addEventListener("submit", function (e) {
+        document.getElementById("admin-login").addEventListener("submit", async function (e) {
             e.preventDefault();
             const msg = document.getElementById("msg");
-            msg.innerHTML = '<div class="alert alert-danger alert-soft py-2 mb-3">Invalid Credentials</div>';
+            msg.innerHTML = '';
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            try {
+                const resp = await fetch("/admin/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                let text = "Invalid Credentials";
+                try {
+                    const json = await resp.json();
+                    if (json && json.error) text = json.error;
+                } catch (_) { /* non-JSON response */ }
+                msg.innerHTML = '<div class="alert alert-danger alert-soft py-2 mb-3">' + text + '</div>';
+            } catch (err) {
+                msg.innerHTML = '<div class="alert alert-danger alert-soft py-2 mb-3">Network error</div>';
+            }
         });
     </script>
 </body>

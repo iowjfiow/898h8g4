@@ -27,7 +27,21 @@ function issueToken(user) {
     );
 }
 
-app.use(express.static(path.join(__dirname, "public")));
+function sendPage(res, name) {
+    res.sendFile(path.join(__dirname, "views", name));
+}
+
+// Page routes (clean URLs, no .html). Raw HTML files are kept under
+// challenge/views/ and never served by the static middleware so that
+// directory enumeration only finds the clean paths below.
+app.get("/", (req, res) => sendPage(res, "index.html"));
+app.get("/about", (req, res) => sendPage(res, "about_us.html"));
+app.get("/login", (req, res) => sendPage(res, "login.html"));
+app.get("/signin", (req, res) => sendPage(res, "login.html"));
+app.get("/signup", (req, res) => sendPage(res, "login.html"));
+app.get("/register", (req, res) => sendPage(res, "login.html"));
+app.get("/admin", (req, res) => sendPage(res, "admin.html"));
+app.get("/dashboard", (req, res) => sendPage(res, "user_dashboard.html"));
 
 app.post("/api/register", (req, res) => {
     const { email, password } = req.body || {};
@@ -54,6 +68,13 @@ app.post("/api/login", (req, res) => {
     }
     const token = issueToken(user);
     return res.status(200).json({ message: "logged in", token });
+});
+
+// Decoy admin login. Always rejects. This exists so the form on /admin
+// makes a real network request and shows up cleanly in tooling like
+// Burp / browser devtools, while still being a dead end.
+app.post("/admin/login", (req, res) => {
+    return res.status(401).json({ error: "Invalid Credentials" });
 });
 
 // VULNERABILITY: This endpoint is supposed to just check whether an email
@@ -106,11 +127,11 @@ function adminMiddleware(req, res, next) {
 }
 
 app.get("/admin/dashboard", adminMiddleware, (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+    sendPage(res, "dashboard.html");
 });
 
 app.use((req, res) => {
-    res.status(404).sendFile(path.join(__dirname, "public", "index.html"));
+    res.status(404).type("text/plain").send("Not Found");
 });
 
 app.listen(PORT, "0.0.0.0", () => {

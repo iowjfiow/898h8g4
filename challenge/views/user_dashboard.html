@@ -29,7 +29,7 @@
             <a class="navbar-brand" href="/">Target<span class="brand-dot">.</span>Shop</a>
             <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                 <li class="nav-item"><a class="nav-link" href="/">Shop</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about_us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
                 <li class="nav-item"><button id="logout-btn" class="btn btn-outline-secondary px-3">Logout</button></li>
             </ul>
         </div>
@@ -92,7 +92,7 @@
     <script>
         document.getElementById("logout-btn").addEventListener("click", function () {
             document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-            window.location.href = "/login.html";
+            window.location.href = "/login";
         });
     </script>
 </body>
