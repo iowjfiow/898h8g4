@@ -56,9 +56,18 @@
                     <input type="text" placeholder="Search for products..." class="bg-transparent flex-1 outline-none text-sm" onkeydown="event.preventDefault()" />
                     <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
                 </div>
-                <a href="/login" class="icon-btn hover:bg-gray-100" aria-label="Account">
+                <a id="account-icon" href="/login" class="icon-btn hover:bg-gray-100" aria-label="Account">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
                 </a>
+                <script>
+                    (function () {
+                        var hasToken = document.cookie.split(";").some(function (c) { return c.trim().indexOf("token=") === 0; });
+                        if (hasToken) {
+                            var el = document.getElementById("account-icon");
+                            if (el) el.setAttribute("href", "/dashboard");
+                        }
+                    })();
+                </script>
                 <button class="icon-btn hover:bg-gray-100 relative" aria-label="Cart" onclick="return false">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.5 11a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 7Z"/><path d="M9 7a3 3 0 1 1 6 0"/></svg>
                     <span class="cart-pip">0</span>
