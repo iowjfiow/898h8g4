@@ -5,7 +5,7 @@ const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 1337;
-const JWT_SECRET = process.env.JWT_SECRET || "targetshop_super_secret_key_2025";
+const JWT_SECRET = process.env.JWT_SECRET || "nexora_super_secret_key_2025";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 const users = [
     {
-        email: "mahesh@targetshop.htb",
+        email: "mahesh@nexora.htb",
         password: "9b8f2c1e7a4d6b3f8e0a1c5d2b7e9f4a",
         role: "admin"
     }
@@ -119,7 +119,7 @@ function adminMiddleware(req, res, next) {
     } catch (err) {
         return res.status(401).send("Unauthorized: invalid token");
     }
-    if (payload.email !== "mahesh@targetshop.htb") {
+    if (payload.email !== "mahesh@nexora.htb") {
         return res.status(401).send("Unauthorized");
     }
     req.user = payload;
