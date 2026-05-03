@@ -1,7 +1,7 @@
 {
-  "name": "targetshop-challenge",
+  "name": "nexora-challenge",
   "version": "1.0.0",
-  "description": "TargetShop - HackTheBox-style web CTF challenge",
+  "description": "NEXORA - HackTheBox-style web CTF challenge",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

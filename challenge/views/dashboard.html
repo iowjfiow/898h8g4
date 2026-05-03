@@ -10,7 +10,8 @@
         body { font-family: 'Inter', system-ui, sans-serif; background: #0f1422; color: #e9ecf5; }
         .brand { font-weight: 800; letter-spacing: -0.02em; }
         .display { font-weight: 800; letter-spacing: -0.04em; }
-        .panel { background: #1a2034; border: 1px solid #283050; border-radius: 18px; padding: 1.75rem; }
+        .panel { background: #1a2034; border: 1px solid #283050; border-radius: 18px; padding: 1.25rem; }
+        @media (min-width: 640px) { .panel { padding: 1.75rem; } }
         .stat { background: #0f1422; border: 1px solid #283050; border-radius: 12px; padding: 1rem 1.25rem; }
         .pill { background: #283050; color: #ff8a6d; padding: 2px 10px; border-radius: 999px; font-size: 11px; font-weight: 600; }
         table th { color: #8a93b3; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -19,31 +20,31 @@
 </head>
 <body>
     <header class="border-b border-[#283050]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="/" class="brand text-2xl text-white">NEXORA<span>.</span> <span class="text-gray-400 font-normal text-base ml-1">&middot; Admin</span></a>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3">
+            <a href="/" class="brand text-xl sm:text-2xl text-white">NEXORA<span>.</span> <span class="hidden sm:inline text-gray-400 font-normal text-base ml-1">&middot; Admin</span></a>
             <span class="pill">Admin</span>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex items-end justify-between mb-8">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6 sm:mb-8">
             <div>
-                <h1 class="display text-3xl text-white">Operations dashboard</h1>
+                <h1 class="display text-2xl sm:text-3xl text-white">Operations dashboard</h1>
                 <p class="text-sm text-gray-400 mt-1">Internal &middot; do not share screenshots externally.</p>
             </div>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
             <div class="stat"><div class="text-xs text-gray-400 tracking-widest">ACTIVE USERS</div><div class="display text-2xl text-white mt-1">12,408</div></div>
             <div class="stat"><div class="text-xs text-gray-400 tracking-widest">OPEN ORDERS</div><div class="display text-2xl text-white mt-1">347</div></div>
             <div class="stat"><div class="text-xs text-gray-400 tracking-widest">REVENUE (MTD)</div><div class="display text-2xl text-white mt-1">$184,220</div></div>
             <div class="stat"><div class="text-xs text-gray-400 tracking-widest">TICKETS</div><div class="display text-2xl text-white mt-1">9</div></div>
         </div>
 
-        <div class="grid lg:grid-cols-7 gap-6">
-            <section class="panel lg:col-span-4">
+        <div class="grid lg:grid-cols-7 gap-4 sm:gap-6">
+            <section class="panel lg:col-span-4 overflow-x-auto">
                 <h2 class="font-bold text-lg mb-3">Recent orders</h2>
-                <table class="w-full text-sm">
+                <table class="w-full text-sm min-w-[420px]">
                     <thead><tr><th class="text-left">#</th><th class="text-left">Customer</th><th class="text-left">Total</th><th class="text-left">Status</th></tr></thead>
                     <tbody>
                         <tr><td>2031</td><td>archer42@example.com</td><td>$429.00</td><td><span class="pill">Shipped</span></td></tr>
