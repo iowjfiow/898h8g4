@@ -32,11 +32,22 @@ function sendPage(res, name) {
     res.sendFile(path.join(__dirname, "views", name));
 }
 
+// Static assets (product/commitment imagery). Only files placed under
+// challenge/assets/ are exposed; HTML in challenge/views/ stays private
+// and is only reachable through the explicit clean-URL routes below.
+app.use("/assets", express.static(path.join(__dirname, "assets"), {
+    fallthrough: false,
+    index: false
+}));
+
 // Page routes (clean URLs, no .html). Raw HTML files are kept under
 // challenge/views/ and never served by the static middleware so that
 // directory enumeration only finds the clean paths below.
 app.get("/", (req, res) => sendPage(res, "index.html"));
 app.get("/about", (req, res) => sendPage(res, "about_us.html"));
+app.get("/shop", (req, res) => sendPage(res, "shop.html"));
+app.get("/categories", (req, res) => sendPage(res, "categories.html"));
+app.get("/deals", (req, res) => sendPage(res, "deals.html"));
 app.get("/login", (req, res) => sendPage(res, "login.html"));
 app.get("/signin", (req, res) => sendPage(res, "login.html"));
 app.get("/signup", (req, res) => sendPage(res, "login.html"));

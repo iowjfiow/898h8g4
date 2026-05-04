@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NEXORA &mdash; Simplicity. Redefined.</title>
+    <title>NEXORA &mdash; Deals</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
@@ -15,22 +15,29 @@
             content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
             height: 2px; background: #111;
         }
-        .product-img {
-            background: linear-gradient(180deg, #f6f5f0 0%, #ececea 100%);
-        }
-        .product-img img {
-            width: 78%; height: 78%; object-fit: contain;
-        }
-        .commit-img {
-            width: 200px; height: 160px; object-fit: contain;
-        }
-        .cat-card:hover { background: #fff; box-shadow: 0 8px 30px -16px rgba(0,0,0,.18); }
+        .product-img { background: linear-gradient(180deg, #f6f5f0 0%, #ececea 100%); }
+        .product-img img { width: 78%; height: 78%; object-fit: contain; }
         .icon-btn { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; }
         .cart-pip {
             position: absolute; top: -2px; right: -2px;
             background: #111; color: #fff; font-size: 10px; font-weight: 700;
             width: 18px; height: 18px; border-radius: 999px;
             display: inline-flex; align-items: center; justify-content: center;
+        }
+        .deal-pip {
+            background: #111; color: #fff;
+            font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+            padding: 4px 10px; border-radius: 999px;
+        }
+        .hero-deals {
+            background-color: #f4f4f4;
+        }
+        .hero-deals img {
+            max-width: 100%; max-height: 100%; object-fit: contain;
+        }
+        .countdown-cell {
+            min-width: 56px; padding: 8px 0; border-radius: 12px;
+            background: #fff; border: 1px solid #e5e5e5;
         }
     </style>
 </head>
@@ -58,10 +65,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
             <a href="/" class="brand text-xl sm:text-2xl">NEXORA<span class="text-black">.</span></a>
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
-                <a href="/" class="nav-link active text-black">Home</a>
+                <a href="/" class="nav-link">Home</a>
                 <a href="/shop" class="nav-link">Shop</a>
                 <a href="/categories" class="nav-link">Categories</a>
-                <a href="/deals" class="nav-link">Deals</a>
+                <a href="/deals" class="nav-link active text-black">Deals</a>
                 <a href="/about" class="nav-link">About</a>
             </nav>
             <div class="flex items-center gap-1 sm:gap-3">
@@ -91,207 +98,195 @@
 
     <!-- Hero -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-        <div class="relative bg-gray-100 rounded-3xl overflow-hidden">
+        <div class="hero-deals rounded-3xl overflow-hidden">
             <div class="grid md:grid-cols-2 gap-4 md:gap-6 items-center">
                 <div class="px-6 py-10 sm:px-14 sm:py-16">
-                    <div class="text-[11px] sm:text-xs tracking-[0.3em] text-gray-500 mb-4 sm:mb-6">NEW ARRIVAL</div>
-                    <h1 class="display text-4xl sm:text-5xl md:text-6xl leading-none">Simplicity.<br/>Redefined.</h1>
-                    <p class="text-gray-500 mt-4 sm:mt-6 max-w-sm text-sm sm:text-base">Discover timeless essentials crafted for everyday elegance.</p>
-                    <a href="#featured" class="mt-6 sm:mt-8 inline-flex items-center gap-3 bg-black text-white text-sm font-semibold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-gray-800">
-                        SHOP NOW
+                    <p class="text-[11px] sm:text-xs tracking-[0.3em] text-gray-500 mb-4 sm:mb-6">SEASONAL EVENT</p>
+                    <h1 class="display text-4xl sm:text-5xl md:text-6xl leading-none">Up to 40%<br/>off essentials.</h1>
+                    <p class="text-gray-600 mt-4 sm:mt-6 max-w-sm text-sm sm:text-base">Hand-picked markdowns on the everyday pieces our team uses most. While stock lasts.</p>
+                    <a href="#deals-grid" class="mt-6 sm:mt-8 inline-flex items-center gap-3 bg-black text-white text-sm font-semibold tracking-wider px-6 sm:px-7 py-3 sm:py-3.5 rounded-full hover:bg-gray-800">
+                        SHOP DEALS
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </a>
-                    <div class="flex items-center gap-2 mt-8 sm:mt-10">
-                        <span class="w-6 h-1.5 rounded-full bg-black"></span>
-                        <span class="w-2 h-1.5 rounded-full bg-gray-300"></span>
-                        <span class="w-2 h-1.5 rounded-full bg-gray-300"></span>
-                    </div>
                 </div>
-                <div class="relative h-64 sm:h-80 md:h-[420px] flex items-center justify-end gap-2 pr-4 sm:pr-8 overflow-hidden">
-                    <div class="text-right shrink-0">
-                        <div class="text-[11px] tracking-[0.3em] text-gray-500">UP TO</div>
-                        <div class="display text-4xl sm:text-5xl md:text-6xl mt-1 sm:mt-2 leading-none">40%</div>
-                        <div class="text-[11px] tracking-[0.3em] text-gray-500 mt-1 sm:mt-2">OFF</div>
-                        <div class="w-8 sm:w-10 h-px bg-gray-400 ml-auto mt-2 sm:mt-3"></div>
-                    </div>
-                    <!-- Vase illustration (responsive) -->
-                    <svg class="shrink-0 w-[180px] h-[260px] sm:w-[240px] sm:h-[320px] md:w-[280px] md:h-[380px]" viewBox="0 0 280 380" fill="none" preserveAspectRatio="xMidYEnd meet">
-                        <!-- pedestal -->
-                        <rect x="60" y="330" width="200" height="22" rx="2" fill="#fff" stroke="#e5e5e5"/>
-                        <ellipse cx="160" cy="358" rx="120" ry="8" fill="#000" opacity="0.05"/>
-                        <!-- vase body (donut shape) -->
-                        <path d="M160 330 C 80 330, 80 230, 130 200 C 165 180, 175 160, 158 138 C 220 148, 250 200, 240 250 C 230 305, 210 330, 160 330 Z" fill="#0f0f0f"/>
-                        <circle cx="180" cy="245" r="38" fill="#f4f4f4"/>
-                        <!-- branch + leaves -->
-                        <path d="M158 138 C 162 100, 180 50, 215 14" stroke="#222" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-                        <ellipse cx="210" cy="22" rx="8" ry="14" fill="#222" transform="rotate(25 210 22)"/>
-                        <ellipse cx="196" cy="50" rx="7" ry="11" fill="#222" transform="rotate(-15 196 50)"/>
-                        <ellipse cx="220" cy="60" rx="7" ry="11" fill="#222" transform="rotate(40 220 60)"/>
-                        <ellipse cx="183" cy="82" rx="6" ry="9" fill="#222" transform="rotate(-30 183 82)"/>
-                        <ellipse cx="206" cy="98" rx="6" ry="9" fill="#222" transform="rotate(20 206 98)"/>
-                        <ellipse cx="172" cy="118" rx="5" ry="8" fill="#222" transform="rotate(-10 172 118)"/>
-                    </svg>
+                <div class="h-64 sm:h-80 md:h-[420px] flex items-center justify-center pr-2 sm:pr-6 overflow-hidden">
+                    <img src="/assets/hero-deals.png" alt="" loading="lazy" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Categories -->
+    <!-- Countdown strip -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4">
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 4l-5 4 2 3 3-1v9h8v-9l3 1 2-3-5-4-3 2-3-2Z" stroke-linejoin="round" stroke-linecap="round"/></svg>
-                <span class="text-xs font-medium">Fashion</span>
-            </a>
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="6"/><path d="M9 6V3h6v3M9 18v3h6v-3" stroke-linecap="round"/></svg>
-                <span class="text-xs font-medium">Accessories</span>
-            </a>
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 16c2 1 4 1 6 0l5-2c2 0 4 1 6 3l-1 2H4l-1-3Z" stroke-linejoin="round" stroke-linecap="round"/><path d="M8 14l4-7c1-1 2-1 3 1l1 5" stroke-linecap="round"/></svg>
-                <span class="text-xs font-medium">Footwear</span>
-            </a>
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 9h14l-1 12H6L5 9Z" stroke-linejoin="round"/><path d="M9 9V7a3 3 0 0 1 6 0v2" stroke-linecap="round"/></svg>
-                <span class="text-xs font-medium">Bags</span>
-            </a>
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 4h6v3l1 2H8l1-2V4Z" stroke-linejoin="round"/><rect x="7" y="9" width="10" height="11" rx="2"/></svg>
-                <span class="text-xs font-medium">Beauty</span>
-            </a>
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 11l8-6 8 6v9H4v-9Z" stroke-linejoin="round"/><path d="M9 20v-6h6v6"/></svg>
-                <span class="text-xs font-medium">Home &amp; Living</span>
-            </a>
-            <a href="#" onclick="event.preventDefault()" class="cat-card bg-gray-50 rounded-2xl py-6 flex flex-col items-center gap-3 transition">
-                <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12V4h8l10 10-8 8L3 12Z" stroke-linejoin="round"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/></svg>
-                <span class="text-xs font-medium">Sale</span>
-            </a>
+        <div class="bg-gray-100 rounded-2xl px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+                <p class="text-[11px] tracking-[0.3em] text-gray-500">ENDS IN</p>
+                <p class="font-semibold mt-1">Limited time &mdash; restocks not guaranteed.</p>
+            </div>
+            <div class="flex items-center gap-2 text-center">
+                <div class="countdown-cell"><div class="font-bold text-lg">02</div><div class="text-[10px] tracking-widest text-gray-500">DAYS</div></div>
+                <span class="font-bold text-gray-400">:</span>
+                <div class="countdown-cell"><div class="font-bold text-lg">14</div><div class="text-[10px] tracking-widest text-gray-500">HRS</div></div>
+                <span class="font-bold text-gray-400">:</span>
+                <div class="countdown-cell"><div class="font-bold text-lg">37</div><div class="text-[10px] tracking-widest text-gray-500">MIN</div></div>
+            </div>
         </div>
     </section>
 
-    <!-- Featured Products -->
-    <section id="featured" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
-        <div class="flex items-end justify-between mb-6">
-            <h2 class="display text-2xl">Featured Products</h2>
-            <a href="#" onclick="event.preventDefault()" class="text-sm font-medium inline-flex items-center gap-2">
-                View all <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+    <!-- Final markdowns -->
+    <section id="deals-grid" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="flex items-end justify-between">
+            <h2 class="display text-2xl sm:text-3xl">Final markdowns</h2>
+            <p class="text-sm text-gray-500">Up to 40% off</p>
         </div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            <!-- product 1: backpack -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-6 mt-6">
             <article class="group">
                 <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
-                    <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
-                    </button>
-                    <img src="/assets/product-backpack.png" alt="Minimal Backpack" loading="lazy" />
-                </div>
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold">Minimal Backpack</h3>
-                    <p class="text-sm font-bold mt-1">$49.99</p>
-                </div>
-            </article>
-            <!-- product 2: watch -->
-            <article class="group">
-                <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 deal-pip">-40%</span>
                     <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
                     </button>
                     <img src="/assets/product-watch.png" alt="Classic Watch" loading="lazy" />
                 </div>
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold">Classic Watch</h3>
-                    <p class="text-sm font-bold mt-1">$129.99</p>
+                <div class="mt-4 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[11px] tracking-[0.2em] text-gray-500 uppercase">Watches</p>
+                        <h3 class="text-base font-semibold mt-1">Classic Watch</h3>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <p class="text-base font-bold">$77.99</p>
+                        <p class="text-xs text-gray-400 line-through">$129.99</p>
+                    </div>
                 </div>
             </article>
-            <!-- product 3: cap -->
             <article class="group">
                 <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 deal-pip">-30%</span>
                     <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
                     </button>
-                    <img src="/assets/product-cap.png" alt="Everyday Cap" loading="lazy" />
+                    <img src="/assets/product-backpack.png" alt="Minimal Backpack" loading="lazy" />
                 </div>
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold">Everyday Cap</h3>
-                    <p class="text-sm font-bold mt-1">$19.99</p>
-                </div>
-            </article>
-            <!-- product 4: bottle -->
-            <article class="group">
-                <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
-                    <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
-                    </button>
-                    <img src="/assets/product-bottle.png" alt="Insulated Bottle" loading="lazy" />
-                </div>
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold">Insulated Bottle</h3>
-                    <p class="text-sm font-bold mt-1">$24.99</p>
+                <div class="mt-4 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[11px] tracking-[0.2em] text-gray-500 uppercase">Bags</p>
+                        <h3 class="text-base font-semibold mt-1">Minimal Backpack</h3>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <p class="text-base font-bold">$34.99</p>
+                        <p class="text-xs text-gray-400 line-through">$49.99</p>
+                    </div>
                 </div>
             </article>
-            <!-- product 5: sunglasses -->
             <article class="group">
                 <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 deal-pip">-25%</span>
                     <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
                     </button>
                     <img src="/assets/product-sunglasses.png" alt="Signature Sunglasses" loading="lazy" />
                 </div>
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold">Signature Sunglasses</h3>
-                    <p class="text-sm font-bold mt-1">$39.99</p>
+                <div class="mt-4 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[11px] tracking-[0.2em] text-gray-500 uppercase">Eyewear</p>
+                        <h3 class="text-base font-semibold mt-1">Signature Sunglasses</h3>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <p class="text-base font-bold">$29.99</p>
+                        <p class="text-xs text-gray-400 line-through">$39.99</p>
+                    </div>
                 </div>
             </article>
-            <!-- product 6: wallet -->
+        </div>
+    </section>
+
+    <!-- This week -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+        <div class="flex items-end justify-between">
+            <h2 class="display text-2xl sm:text-3xl">This week's picks</h2>
+            <p class="text-sm text-gray-500">New deals every Monday</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-5 sm:gap-6 mt-6">
             <article class="group">
                 <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 deal-pip">-20%</span>
+                    <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
+                    </button>
+                    <img src="/assets/product-bottle.png" alt="Insulated Bottle" loading="lazy" />
+                </div>
+                <div class="mt-4 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[11px] tracking-[0.2em] text-gray-500 uppercase">Drinkware</p>
+                        <h3 class="text-base font-semibold mt-1">Insulated Bottle</h3>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <p class="text-base font-bold">$19.99</p>
+                        <p class="text-xs text-gray-400 line-through">$24.99</p>
+                    </div>
+                </div>
+            </article>
+            <article class="group">
+                <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 deal-pip">-15%</span>
+                    <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
+                    </button>
+                    <img src="/assets/product-cap.png" alt="Everyday Cap" loading="lazy" />
+                </div>
+                <div class="mt-4 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[11px] tracking-[0.2em] text-gray-500 uppercase">Headwear</p>
+                        <h3 class="text-base font-semibold mt-1">Everyday Cap</h3>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <p class="text-base font-bold">$16.99</p>
+                        <p class="text-xs text-gray-400 line-through">$19.99</p>
+                    </div>
+                </div>
+            </article>
+            <article class="group">
+                <div class="product-img rounded-2xl aspect-square relative flex items-center justify-center">
+                    <span class="absolute top-3 left-3 deal-pip">-30%</span>
                     <button class="absolute top-3 right-3 icon-btn bg-white" aria-label="Wishlist" onclick="return false">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.5-7 10-7 10Z" stroke-linejoin="round"/></svg>
                     </button>
                     <img src="/assets/product-wallet.png" alt="Leather Wallet" loading="lazy" />
                 </div>
-                <div class="mt-3">
-                    <h3 class="text-sm font-semibold">Leather Wallet</h3>
-                    <p class="text-sm font-bold mt-1">$34.99</p>
+                <div class="mt-4 flex items-start justify-between gap-3">
+                    <div>
+                        <p class="text-[11px] tracking-[0.2em] text-gray-500 uppercase">Wallets</p>
+                        <h3 class="text-base font-semibold mt-1">Leather Wallet</h3>
+                    </div>
+                    <div class="text-right whitespace-nowrap">
+                        <p class="text-base font-bold">$24.49</p>
+                        <p class="text-xs text-gray-400 line-through">$34.99</p>
+                    </div>
                 </div>
             </article>
         </div>
     </section>
 
-    <!-- Our Commitment -->
-    <section class="bg-gray-100 mt-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <h2 class="display text-3xl sm:text-4xl text-center">OUR COMMITMENT</h2>
-            <div class="grid md:grid-cols-3 gap-12 mt-14 text-center">
-                <div>
-                    <div class="h-40 flex items-end justify-center">
-                        <img src="/assets/commit-timeless.png" alt="" class="commit-img" />
-                    </div>
-                    <h3 class="font-bold tracking-wider mt-6">TIMELESS DESIGN</h3>
-                    <p class="text-gray-600 mt-3 max-w-xs mx-auto">Creating products with enduring style that transcend trends.</p>
-                </div>
-                <div>
-                    <div class="h-40 flex items-end justify-center">
-                        <img src="/assets/commit-premium.png" alt="" class="commit-img" />
-                    </div>
-                    <h3 class="font-bold tracking-wider mt-6">PREMIUM MATERIALS</h3>
-                    <p class="text-gray-600 mt-3 max-w-xs mx-auto">Hand-selected, sustainably sourced materials for quality you can feel.</p>
-                </div>
-                <div>
-                    <div class="h-40 flex items-end justify-center">
-                        <img src="/assets/commit-curated.png" alt="" class="commit-img" />
-                    </div>
-                    <h3 class="font-bold tracking-wider mt-6">CURATED UTILITY</h3>
-                    <p class="text-gray-600 mt-3 max-w-xs mx-auto">Refined essentials designed to elevate your everyday life.</p>
-                </div>
+    <!-- Promise strip -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+        <div class="bg-[#f7f3eb] rounded-3xl px-6 sm:px-12 py-10 grid sm:grid-cols-3 gap-8 text-center">
+            <div>
+                <p class="display text-2xl">Free shipping</p>
+                <p class="text-gray-600 text-sm mt-2">On every order over $50, sale included.</p>
+            </div>
+            <div>
+                <p class="display text-2xl">30-day returns</p>
+                <p class="text-gray-600 text-sm mt-2">Try it at home. Send it back if it's not for you.</p>
+            </div>
+            <div>
+                <p class="display text-2xl">Member rewards</p>
+                <p class="text-gray-600 text-sm mt-2">Early access to drops and exclusive prices.</p>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter strip (static, submit does nothing) -->
-    <section class="bg-black text-white">
+    <!-- Newsletter -->
+    <section class="bg-black text-white mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div class="flex items-center gap-4">
                 <span class="w-12 h-12 shrink-0 rounded-full border border-white/40 flex items-center justify-center">
@@ -302,7 +297,7 @@
                     <div class="text-sm text-gray-300">Subscribe to get updates on new arrivals and exclusive offers.</div>
                 </div>
             </div>
-            <form id="newsletter" class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto" onsubmit="event.preventDefault()">
+            <form class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto" onsubmit="event.preventDefault()">
                 <input type="email" placeholder="Enter your email" class="bg-transparent border border-white/30 rounded-full px-5 py-3 text-sm w-full sm:w-72 outline-none placeholder:text-gray-400 focus:border-white" />
                 <button type="submit" class="bg-white text-black font-semibold tracking-wider text-sm px-6 py-3 rounded-full">SUBSCRIBE</button>
             </form>
@@ -317,9 +312,7 @@
             <div class="flex justify-center md:justify-end items-center gap-5 text-black">
                 <a href="#" onclick="event.preventDefault()" aria-label="Instagram"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
                 <a href="#" onclick="event.preventDefault()" aria-label="Facebook"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H6v4h3v8h4Z"/></svg></a>
-                <a href="#" onclick="event.preventDefault()" aria-label="Facebook"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H6v4h3v8h4Z"/></svg></a>
                 <a href="#" onclick="event.preventDefault()" aria-label="Twitter"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.4-1.6.7-2.4.8a4 4 0 0 0 1.8-2.3 8.5 8.5 0 0 1-2.7 1A4.2 4.2 0 0 0 11.6 9 12 12 0 0 1 3 4.5a4.2 4.2 0 0 0 1.3 5.6c-.7 0-1.4-.2-2-.5 0 2 1.4 3.7 3.4 4.1a4.2 4.2 0 0 1-1.9.1c.5 1.7 2 3 3.9 3a8.4 8.4 0 0 1-6.2 1.7A11.9 11.9 0 0 0 8 21c8 0 12-6.6 12-12.4v-.6c.8-.6 1.5-1.4 2-2.2Z"/></svg></a>
-                <a href="#" onclick="event.preventDefault()" aria-label="Pinterest"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.2 2.6 7.7 6.2 9.2-.1-.8-.2-2 0-2.9l1.3-5.3s-.3-.7-.3-1.7c0-1.6 1-2.8 2.1-2.8 1 0 1.5.8 1.5 1.6 0 1-.6 2.5-.9 3.9-.3 1.1.6 2.1 1.7 2.1 2 0 3.6-2.1 3.6-5.2 0-2.7-2-4.6-4.7-4.6-3.2 0-5.1 2.4-5.1 4.9 0 1 .4 2 .8 2.6.1.1.1.2.1.4l-.3 1.2c0 .2-.2.3-.4.2-1.4-.7-2.3-2.7-2.3-4.4 0-3.5 2.6-6.8 7.4-6.8 3.9 0 6.9 2.8 6.9 6.5 0 3.9-2.4 7-5.8 7-1.1 0-2.2-.6-2.6-1.3l-.7 2.7c-.3 1-1 2.3-1.5 3 1.1.4 2.3.5 3.5.5 5.5 0 10-4.5 10-10S17.5 2 12 2Z"/></svg></a>
             </div>
         </div>
         <div class="border-t border-gray-300/60 py-3 text-center text-xs text-gray-700">
