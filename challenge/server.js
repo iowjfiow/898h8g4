@@ -53,7 +53,18 @@ app.get("/admin", (req, res) => {
     }
     sendPage(res, "admin.html");
 });
-app.get("/dashboard", (req, res) => sendPage(res, "user_dashboard.html"));
+app.get("/dashboard", (req, res) => {
+    const token = req.cookies && req.cookies.token;
+    if (token) {
+        try {
+            const payload = jwt.verify(token, JWT_SECRET);
+            if (payload.email === "mahesh@nexora.htb") {
+                return res.redirect("/admin/dashboard");
+            }
+        } catch (err) { /* fall through to user dashboard */ }
+    }
+    sendPage(res, "user_dashboard.html");
+});
 
 app.post("/api/register", (req, res) => {
     const { email, password, name } = req.body || {};
