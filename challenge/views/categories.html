@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NEXORA &mdash; Categories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        body { font-family: 'Inter', system-ui, sans-serif; color: #111; }
+        .brand { font-weight: 800; letter-spacing: -0.02em; }
+        .display { font-weight: 800; letter-spacing: -0.04em; }
+        .nav-link { position: relative; padding-bottom: 4px; }
+        .nav-link.active::after {
+            content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+            height: 2px; background: #111;
+        }
+        .icon-btn { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; }
+        .cart-pip {
+            position: absolute; top: -2px; right: -2px;
+            background: #111; color: #fff; font-size: 10px; font-weight: 700;
+            width: 18px; height: 18px; border-radius: 999px;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        .cat-tile {
+            background: linear-gradient(180deg, #f6f5f0 0%, #ececea 100%);
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .cat-tile:hover { transform: translateY(-2px); box-shadow: 0 18px 40px -24px rgba(0,0,0,.25); }
+        .cat-tile img {
+            width: 70%; height: 70%; object-fit: contain;
+        }
+        .cat-feature {
+            background: linear-gradient(180deg, #f6f5f0 0%, #ececea 100%);
+        }
+        .cat-feature img { width: 60%; height: 60%; object-fit: contain; }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Promo bar -->
+    <div class="bg-black text-white text-xs sm:text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7zM7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke-linejoin="round" stroke-linecap="round"/></svg>
+                <span>Free shipping on all orders over $50</span>
+            </div>
+            <div class="hidden sm:flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>Easy 30-day returns</span>
+            </div>
+            <div class="hidden md:flex items-center gap-2">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 14a8 8 0 1 1 16 0M4 14v3a2 2 0 0 0 2 2h2v-7H6a2 2 0 0 0-2 2ZM20 14v3a2 2 0 0 1-2 2h-2v-7h2a2 2 0 0 1 2 2Z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>24/7 Customer support</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-3 sm:gap-6">
+            <a href="/" class="brand text-xl sm:text-2xl">NEXORA<span class="text-black">.</span></a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-700">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/shop" class="nav-link">Shop</a>
+                <a href="/categories" class="nav-link active text-black">Categories</a>
+                <a href="/deals" class="nav-link">Deals</a>
+                <a href="/about" class="nav-link">About</a>
+            </nav>
+            <div class="flex items-center gap-1 sm:gap-3">
+                <div class="hidden lg:flex items-center w-72 h-10 px-4 rounded-full border border-gray-200 bg-gray-50">
+                    <input type="text" placeholder="Search for products..." class="bg-transparent flex-1 outline-none text-sm" onkeydown="event.preventDefault()" />
+                    <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+                </div>
+                <a id="account-icon" href="/login" class="icon-btn hover:bg-gray-100" aria-label="Account">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                </a>
+                <script>
+                    (function () {
+                        var hasToken = document.cookie.split(";").some(function (c) { return c.trim().indexOf("token=") === 0; });
+                        if (hasToken) {
+                            var el = document.getElementById("account-icon");
+                            if (el) el.setAttribute("href", "/dashboard");
+                        }
+                    })();
+                </script>
+                <button class="icon-btn hover:bg-gray-100 relative" aria-label="Cart" onclick="return false">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 7h14l-1.5 11a2 2 0 0 1-2 1.7H8.5a2 2 0 0 1-2-1.7L5 7Z"/><path d="M9 7a3 3 0 1 1 6 0"/></svg>
+                    <span class="cart-pip">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page header -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12">
+        <div class="text-[11px] tracking-[0.3em] text-gray-500">CATEGORIES</div>
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mt-2">
+            <h1 class="display text-4xl sm:text-5xl">Shop by category</h1>
+            <p class="text-sm text-gray-500 max-w-md">Six edits, one philosophy — refined essentials for the way you actually live.</p>
+        </div>
+    </section>
+
+    <!-- Featured pair -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
+        <div class="grid sm:grid-cols-2 gap-5 sm:gap-6">
+            <a href="/shop" class="cat-feature rounded-3xl p-8 sm:p-10 flex flex-col gap-6 transition hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,.3)]">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-[11px] tracking-[0.3em] text-gray-500">EDITORIAL</p>
+                        <h2 class="display text-2xl sm:text-3xl mt-2">Carry, Refined</h2>
+                        <p class="text-gray-500 text-sm mt-2 max-w-xs">Bags built for the daily commute and weekend getaways.</p>
+                    </div>
+                    <span class="text-sm font-medium inline-flex items-center gap-2">
+                        Shop bags
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </div>
+                <div class="flex-1 min-h-[200px] flex items-center justify-center">
+                    <img src="/assets/product-backpack.png" alt="Bags" loading="lazy" />
+                </div>
+            </a>
+            <a href="/shop" class="cat-feature rounded-3xl p-8 sm:p-10 flex flex-col gap-6 transition hover:shadow-[0_18px_40px_-24px_rgba(0,0,0,.3)]">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-[11px] tracking-[0.3em] text-gray-500">EDITORIAL</p>
+                        <h2 class="display text-2xl sm:text-3xl mt-2">Time, Considered</h2>
+                        <p class="text-gray-500 text-sm mt-2 max-w-xs">Watches with quiet presence and lasting craftsmanship.</p>
+                    </div>
+                    <span class="text-sm font-medium inline-flex items-center gap-2">
+                        Shop watches
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                </div>
+                <div class="flex-1 min-h-[200px] flex items-center justify-center">
+                    <img src="/assets/product-watch.png" alt="Watches" loading="lazy" />
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Category tiles -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+        <h2 class="display text-2xl">All categories</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-5 mt-6">
+            <a href="/shop" class="cat-tile rounded-2xl aspect-square flex flex-col items-center justify-center p-4 text-center">
+                <img src="/assets/product-backpack.png" alt="" loading="lazy" />
+                <p class="text-sm font-semibold mt-2">Bags</p>
+            </a>
+            <a href="/shop" class="cat-tile rounded-2xl aspect-square flex flex-col items-center justify-center p-4 text-center">
+                <img src="/assets/product-watch.png" alt="" loading="lazy" />
+                <p class="text-sm font-semibold mt-2">Watches</p>
+            </a>
+            <a href="/shop" class="cat-tile rounded-2xl aspect-square flex flex-col items-center justify-center p-4 text-center">
+                <img src="/assets/product-cap.png" alt="" loading="lazy" />
+                <p class="text-sm font-semibold mt-2">Headwear</p>
+            </a>
+            <a href="/shop" class="cat-tile rounded-2xl aspect-square flex flex-col items-center justify-center p-4 text-center">
+                <img src="/assets/product-bottle.png" alt="" loading="lazy" />
+                <p class="text-sm font-semibold mt-2">Drinkware</p>
+            </a>
+            <a href="/shop" class="cat-tile rounded-2xl aspect-square flex flex-col items-center justify-center p-4 text-center">
+                <img src="/assets/product-sunglasses.png" alt="" loading="lazy" />
+                <p class="text-sm font-semibold mt-2">Eyewear</p>
+            </a>
+            <a href="/shop" class="cat-tile rounded-2xl aspect-square flex flex-col items-center justify-center p-4 text-center">
+                <img src="/assets/product-wallet.png" alt="" loading="lazy" />
+                <p class="text-sm font-semibold mt-2">Wallets</p>
+            </a>
+        </div>
+    </section>
+
+    <!-- Editorial pull -->
+    <section class="bg-gray-100 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-8 items-center">
+            <div class="md:col-span-2">
+                <h2 class="display text-3xl sm:text-4xl">Find pieces<br/>that fit how you live.</h2>
+                <p class="text-gray-600 mt-4 max-w-xl">Each NEXORA category is a tightly edited shortlist &mdash; no clutter, no filler. Browse the categories that match your everyday rhythm.</p>
+            </div>
+            <a href="/shop" class="justify-self-start md:justify-self-end inline-flex items-center gap-3 bg-black text-white text-sm font-semibold tracking-wider px-6 py-3 rounded-full hover:bg-gray-800">
+                BROWSE ALL
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div class="flex items-center gap-4">
+                <span class="w-12 h-12 shrink-0 rounded-full border border-white/40 flex items-center justify-center">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m4 8 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <div>
+                    <div class="font-semibold">Stay in the loop</div>
+                    <div class="text-sm text-gray-300">Subscribe to get updates on new arrivals and exclusive offers.</div>
+                </div>
+            </div>
+            <form class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto" onsubmit="event.preventDefault()">
+                <input type="email" placeholder="Enter your email" class="bg-transparent border border-white/30 rounded-full px-5 py-3 text-sm w-full sm:w-72 outline-none placeholder:text-gray-400 focus:border-white" />
+                <button type="submit" class="bg-white text-black font-semibold tracking-wider text-sm px-6 py-3 rounded-full">SUBSCRIBE</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#f7f3eb]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid md:grid-cols-3 gap-6 items-center text-center md:text-left">
+            <a href="/" class="brand text-3xl">NEXORA<span class="text-black">.</span></a>
+            <p class="font-serif italic text-base text-gray-700">Simplicity that stands out.<br/>Quality that lasts.</p>
+            <div class="flex justify-center md:justify-end items-center gap-5 text-black">
+                <a href="#" onclick="event.preventDefault()" aria-label="Instagram"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                <a href="#" onclick="event.preventDefault()" aria-label="Facebook"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7c0-1 .5-2 2-2h2V1h-3c-3 0-5 2-5 5v4H6v4h3v8h4Z"/></svg></a>
+                <a href="#" onclick="event.preventDefault()" aria-label="Twitter"><svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.8c-.7.4-1.6.7-2.4.8a4 4 0 0 0 1.8-2.3 8.5 8.5 0 0 1-2.7 1A4.2 4.2 0 0 0 11.6 9 12 12 0 0 1 3 4.5a4.2 4.2 0 0 0 1.3 5.6c-.7 0-1.4-.2-2-.5 0 2 1.4 3.7 3.4 4.1a4.2 4.2 0 0 1-1.9.1c.5 1.7 2 3 3.9 3a8.4 8.4 0 0 1-6.2 1.7A11.9 11.9 0 0 0 8 21c8 0 12-6.6 12-12.4v-.6c.8-.6 1.5-1.4 2-2.2Z"/></svg></a>
+            </div>
+        </div>
+        <div class="border-t border-gray-300/60 py-3 text-center text-xs text-gray-700">
+            &copy; 2024 Nexora. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
